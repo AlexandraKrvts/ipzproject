@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="flat-design-form">
+    <div class="form-display" id="register">
+      <div style="text-align:center">
+      <h1>Заполните информацию о себе</h1>
+      </div>
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid" novalidate class="feedback-form">
+        <fieldset>
+          <ul>
+            <li>
+              <div class="item">
+                <input type="text"
+                       id="name"
+                       class="form-control"
+                       name="name"
+                       placeholder="Имя"
+                       [(ngModel)]="model.name"
+                       #name="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                       required/>
+                <!-- input validation group -->
+                <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+                  <!-- individual validation errors -->
+                  <div *ngIf="name.errors?.required">Field is required</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item">
+                <input data-validate-length="2" name="age" placeholder="Возраст" type="text" id="age"
+                       [(ngModel)]="model.age"
+                       #age="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && age.invalid }"
+                       required/>
+                <!-- input validation group -->
+                <div *ngIf="f.submitted && age.invalid" class="invalid-input">
+                  <!-- individual validation errors -->
+                  <div *ngIf="age.errors?.required">Field is required</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <p class="radio_styles" style="padding-left: 18px; padding-top: 5px;">Укажите Ваш пол</p>
+              <div class="item" style="padding-left: 18px; padding-top: 12px; padding-bottom: 15px;">
+                <input type="radio" id="Choice1" name="contact" value="мужчина"
+                       [(ngModel)]="model.sex"
+                       #sex="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && sex.invalid }"
+                       required/>
+                <label for="Choice1" class="radio_styles" style="padding-right: 30px;">мужчина</label>
+
+                <input type="radio" id="Choice2" name="contact" value="женщина"[(ngModel)]="model.sex"
+                       #sex="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && sex.invalid }"
+                       required/>
+                <label for="Choice2" class="radio_styles">женщина</label>
+                <!-- input validation group -->
+                <div *ngIf="f.submitted && age.invalid" class="invalid-input">
+                  <!-- individual validation errors -->
+                  <div *ngIf="age.errors?.required">Field is required</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item">
+                <input type="text"
+                       id="email"
+                       class="form-control"
+                       name="email"
+                       placeholder="Your email"
+                       [(ngModel)]="model.email"
+                       #email="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                       required email/>
+                <!-- input validation group -->
+                <div *ngIf="f.submitted && email.invalid" class="invalid-input">
+                  <!-- individual validation errors -->
+                  <div *ngIf="email.errors?.required">Field is required</div>
+                  <div *ngIf="email.errors?.email">Field is not a valid email</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item">
+                <textarea
+                  id="feedback"
+                  class="form-control"
+                  name="feedback"
+                  placeholder="Виши пожелания"
+                  rows="10"
+                  [(ngModel)]="model.feedback"
+                  #feedback="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && feedback.invalid }"
+                  required minlength="10">
+			    </textarea>
+                <!-- input validation group -->
+                <div *ngIf="f.submitted && feedback.invalid" class="invalid-input">
+                  <!-- individual validation errors -->
+                  <div *ngIf="feedback.errors?.required">Field is required</div>
+                  <div *ngIf="feedback.errors?.minlength">Field is too small (try 10 characters)</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </fieldset>
+        <br>
+        <button type="submit" class="myEndButton" routerLink="newvoting" (click)="sendFeedback() && sendUser(model)"  >
+          <i class="fa fa-envelope-o"></i>
+          <span> Войти</span>
+        </button>
+      </form>
+      <div  >
+
+      </div>
+
+    </div>
+  </div>
+</div>

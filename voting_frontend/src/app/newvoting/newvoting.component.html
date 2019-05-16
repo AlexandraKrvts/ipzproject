@@ -1,0 +1,15 @@
+
+<div style="text-align:center">
+
+  <div *ngFor="let m of messages">
+    {{"You:"}}{{m.description}}
+
+  </div>
+  <input #message>
+
+  <button (click)="sendMessage(message.value); message.value = ''">Send Message</button>
+
+  <app-question></app-question>
+  <toaster-container></toaster-container>
+</div>
+

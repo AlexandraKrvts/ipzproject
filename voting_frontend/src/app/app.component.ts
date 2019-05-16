@@ -26,15 +26,16 @@ export class AppComponent implements OnInit, OnDestroy {
     this.intervalSubscription = interval(1000).subscribe(() => this.questionService.getLastQuestion());
   }
 
-  sendMessage(message: string): void {
-    this.httpClient.put('chat', message)
-      .subscribe(() => this.toaster.pop('success', 'Message sended.'));
-  }
-
   ngOnDestroy(): void {
     if (this.intervalSubscription) {
       this.intervalSubscription.unsubscribe();
     }
   }
+  sendMessage(message: string): void {
+    this.httpClient.put('chat', message)
+      .subscribe(() => this.toaster.pop('success', 'Message was sent.'));
+  }
+
+
 
 }

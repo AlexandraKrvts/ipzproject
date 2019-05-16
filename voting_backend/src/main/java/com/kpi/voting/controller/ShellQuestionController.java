@@ -14,6 +14,8 @@ public class ShellQuestionController {
     @Autowired
     private ChatService chatService;
 
+
+
     @ShellMethod("Create new question.")
     public void qc(String question) {
         final Long id = questionService.createQuestion(question);
@@ -29,6 +31,9 @@ public class ShellQuestionController {
     public void printMessages() {
         chatService.getAllMessages().forEach(System.out::println);
     }
+
+
+
 
 
 }
